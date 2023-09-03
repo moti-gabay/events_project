@@ -1,4 +1,4 @@
-import { Link} from 'react-router-dom';
+import { Link, useNavigation} from 'react-router-dom';
 import { useState} from 'react'
 import axios from 'axios';
 
@@ -13,7 +13,7 @@ const SignIn:React.FC = () => {
         email: string;
         password: string
       }
-    // const nav :Navigation= useNavigation();
+    const Navigation = useNavigation();
    
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
@@ -29,7 +29,7 @@ const SignIn:React.FC = () => {
         }
       }
 return (
-    <div className="w-[100%] bg-black  h-[500px]">
+    <div className="z-10 w-[100%]  h-[500px]">
 
  <div className="rounded-xl border border-orange-400  bg-slate-400 w-[60%] h-[300px] p-9 mx-auto my-9">
     <h1 className="text-center text-3xl">Sign in </h1>
@@ -44,7 +44,7 @@ return (
             </div>
             <div className=''>
             <Link   to="/home" />
-            <button   type="submit" className="btn btn-sm  btn-warning">Sign In</button>
+            <button onClick={() => Navigation("/home")}  type="submit" className="btn btn-sm  btn-warning">Sign In</button>
           </div>
         </form>
     </div>   

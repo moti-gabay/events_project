@@ -1,9 +1,9 @@
-import Home from "./components/pages/Home"
+// import Home from "./components/pages/Home"
 import AppRoutes from "./routes/AppRoutes"
 
 function App() {
   return (
-    <div className="min-h-screen flex justify-center items-center">
+    <div className="">
     
       <AppRoutes/>
       
