@@ -4,9 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 const NavBar: React.FC<{}> = () => {
   const navigate = useNavigate();
   return (
-    <header className="p-3 bg-dark text-white">
-      <div className="container">
-        <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    <header className="p-3">
+      <div className="">
+        <div className="flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <div
             onClick={() => {
               navigate("/");
@@ -35,7 +35,7 @@ const NavBar: React.FC<{}> = () => {
             >
               Scheduling
             </Link>
-            <Link to="/signin" type="button" className="btn btn-warning">
+            <Link to="/signIn" type="button" className="btn btn-warning">
               Sign In
             </Link>
           </div>

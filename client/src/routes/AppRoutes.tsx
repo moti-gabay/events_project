@@ -7,6 +7,7 @@ import Table from '../pages/Table';
 import Scheduling from '../pages/Scheduling';
 import LayoutAdmin from '../layout/LayuotAdmin';
 import NotFound404 from '../components/NotFound404';
+import SignIn from '../forms/SignIn';
 // import SignIn from '../forms/SignIn';
 
 
@@ -19,7 +20,8 @@ const AppRoutes: React.FC = () =>   {
  {path:"/",element:<Home/>},
  {path:"/meals", element:<Meals/>},
  {path:"/table",element:<Table/>},
- {path:"/scheduling",element:<Scheduling/>}
+ {path:"/scheduling",element:<Scheduling/>},
+ {path:"/signIn",element:<SignIn/> }
  ]
 },
 {
