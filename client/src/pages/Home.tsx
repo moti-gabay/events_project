@@ -10,7 +10,7 @@ const HomePage: React.FC = () => {
         }}
         className="text-center flex items-center justify-center h-[50vh] sm:h-[62vh] md:h-[64vh] lg:h-[68vh]"
       >
-        <div
+        <div className=""
           style={{
             position: "absolute",
             top: 0,
@@ -30,11 +30,11 @@ const HomePage: React.FC = () => {
           </h2>
         </div>
       </div>
-      <div>
-        <h1>hi moti</h1>
-        <p>table number : 0</p>
+      <div className="absolute rounded-xl left-[30%] top-[400px] mx-auto w-[400px] border text-center text-white items-center text-xl">
+        <h1>Hi Moti</h1>
+        <p>Table Number : 0</p>
         <p>your menu :</p>
-        <p></p>
+        <p>more....</p>
       </div>
     </div>
   );

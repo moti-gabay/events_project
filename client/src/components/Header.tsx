@@ -14,25 +14,25 @@ const Header: React.FC = () => {
             <h1 className="text-lg font-black p-1 ">PICASSO TEAM</h1>
           </div>
               <ul className="flex justify-between text-xl">
-            <li>
+            <li className='hover:scale-110'>
               <Link to="/" className="nav-link px-2 hover:scale-110">
                 Home
               </Link>
             </li>
-            <li>
+            <li className='hover:scale-110'>
               <Link to="/meals" className="nav-link px-2  hover:scale-110 ">
                 Meals
               </Link>
             </li>
-            <li>
-              <Link to="/Scheduling" className=" px-2 hover:scale-110">
+            <li className='hover:scale-110'>
+              <Link to="/Scheduling" className=' px-2 hover:scale-110'>
               Scheduling
               </Link>
             </li>
           </ul>
           <div className="text-end">
           
-            <Link to="/signIn" type="button"  className='hover:scale-110'>
+            <Link to="/signIn" type="button"  className='text-xl hover:scale-110'>
               Sign In
             </Link>
           </div>
