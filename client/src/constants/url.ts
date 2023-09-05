@@ -3,7 +3,7 @@ const API_URL = 'http://localhost:3003/';
 export const TOKEN_KEY = "token";
 // user
 export const SIGNUP_ROUTE = API_URL + "users/signUp";
-export const LOGIN_ROUTE = API_URL + "users/login";
+export const LOGIN_ROUTE = API_URL + "guests/login";
 export const USER_INFO_ROUTE = API_URL + "users/getUserInfo";
 export const CHECK_TOKEN = API_URL + "users/checkToken";
 export const PRODUCTS_LIST_ROUTE = API_URL + "products/productsList";
