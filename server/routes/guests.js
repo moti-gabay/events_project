@@ -16,7 +16,6 @@ router.get("/checkToken", auth, guestReq.checkToken);
 
 // admin requests
 router.post("/signUp",auth,authAdmin, adminReq.SignUp);
-
 router.get("/guestsList",auth, authAdmin, adminReq.guestsList);
 router.get("/checkAdminToken", auth, authAdmin, adminReq.checkAdminToken);
 router.delete("/delete/:id", auth, authAdmin, adminReq.delteGuestById);

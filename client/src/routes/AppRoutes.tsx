@@ -32,7 +32,8 @@ const AppRoutes: React.FC = () =>   {
    children:[
     {path:"/admin/meals", element:<Meals/>},
     {path:"/admin/table",element:<Table/>},
-    {path:"/admin/scheduling",element:<Scheduling/>}
+    {path:"/admin/scheduling",element:<Scheduling/>},
+    {path:"/admin/signUp",element:<SignUp/>}
    ]
 },{
     path:"*",

@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { config } = require("../config/secret");
-
+const secret = "motiSecret"
 exports.auth = (req,res,next) => {
   const token = req.header("x-api-key");
   if(!token){
@@ -8,7 +8,7 @@ exports.auth = (req,res,next) => {
   }
   try{
     // verify token
-    const decodeToken = jwt.verify(token, config.TOKEN_SECRET);
+    const decodeToken = jwt.verify(token, secret);
     req.tokenData = decodeToken
     next();
   }
