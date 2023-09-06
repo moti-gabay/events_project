@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3003/';
+const API_URL = 'http://localhost:3002/';
 
 export const TOKEN_KEY = "token";
 // user

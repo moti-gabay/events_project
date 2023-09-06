@@ -31,6 +31,12 @@ const HomePage: React.FC = () => {
         </div>
       </div>
       <div className="absolute rounded-xl left-[30%] top-[400px] mx-auto w-[400px] border text-center text-white items-center text-xl">
+      { <h1 className='text-[3em] text-center'>
+        Loading
+        <span className="loading loading-ball loading-md"></span>
+        <span className="loading loading-ball loading-md"></span>
+        <span className="loading loading-ball loading-md"></span>
+        </h1>}
         <h1>Hi Moti</h1>
         <p>Table Number : 0</p>
         <p>your menu :</p>
