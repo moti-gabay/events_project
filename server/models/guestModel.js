@@ -4,8 +4,8 @@ const jwt = require("jsonwebtoken");
 const { config } = require("../config/secret");
 
 const guestSchema = new mongoose.Schema({
-  FirstName:String,
-  LastName:String,
+  firstName:String,
+  lastName:String,
   email:String,
   password:String,
   meal:String,
@@ -14,7 +14,7 @@ const guestSchema = new mongoose.Schema({
   }
 },{timestamps:true});
 
-exports.guestModel = mongoose.model("users",guestSchema);
+exports.guestModel = mongoose.model("guests",guestSchema);
 
 exports.createToken = (user_id, role = "user") => {
   const token = jwt.sign(

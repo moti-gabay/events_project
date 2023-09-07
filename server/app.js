@@ -13,5 +13,5 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname,"public")));
 routesInit(app);
 const server = http.createServer(app);
-const port = 3002;
+const port = config.PORT;
 server.listen(port);

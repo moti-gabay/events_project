@@ -9,7 +9,6 @@ router.get("/", async(req,res) => {
 })
 
 // user requests
-router.post("/signUp", guestReq.SignUp);
 router.post("/login", guestReq.login);
 router.get("/getGuestInfo", auth, guestReq.getInfo);
 router.get("/checkToken", auth, guestReq.checkToken);

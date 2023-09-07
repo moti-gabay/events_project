@@ -13,6 +13,7 @@ import AddMeal from '../forms/AddMeal';
 // import SignIn from '../forms/SignIn';
 import ManageGuests from "../pages/admin/ManageGuests"
 import ManageMeals from '../pages/admin/ManageMeals';
+import ManageEvents from '../pages/admin/ManageEvent';
 
 const AppRoutes: React.FC = () =>   {
     const router = createBrowserRouter([
@@ -37,7 +38,7 @@ const AppRoutes: React.FC = () =>   {
     {path:"/admin/signUp",element:<SignUp/>},
     {path:"/admin/manageMeals",element:<ManageMeals/>},
     {path:"/admin",element:<ManageGuests/>},
-    {path:"/admin/manageEvents",element:<AddMeal/>},
+    {path:"/admin/manageEvents",element:<ManageEvents/>},
    ]
 },{
     path:"*",

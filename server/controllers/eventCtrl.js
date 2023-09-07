@@ -25,7 +25,7 @@ exports.eventReq = {
         }
     },
     deleteEvent: async(req,res) => {
-        const {id} = req.params;
+        const {id} = req.params
         try{
             const data = await EventModel.deleteOne({_id:id})
             return res.status(201).json(data); 

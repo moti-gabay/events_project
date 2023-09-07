@@ -3,7 +3,7 @@ const { guestModel, validSignUp, validLogin, createToken } = require("../models/
 const {config} = require("../config/secret")
 
 
-exports.guestReq ={
+exports.guestReq = {
   SignUp: async(req,res) => {
     const validBody = validSignUp(req.body);
     if(validBody.error){
