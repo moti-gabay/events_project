@@ -1,4 +1,5 @@
 const { guestModel,validSignUp } = require("../models/guestModel");
+const bcrypt = require("bcrypt");
 
 exports.adminReq = {
     SignUp: async(req,res) => {

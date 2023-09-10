@@ -1,13 +1,39 @@
-import  { useState } from 'react'
+import  { useState,useEffect } from 'react'
 import {BsTrash3} from 'react-icons/bs'
 import {FaEdit, FaPlus} from 'react-icons/fa'
 import Modal from '../../modal/Modal'
+import axios from 'axios';
+import { MEAL_INFO_ROUTE, MEAL_LIST_ROUTE } from '../../constants/url';
+import { Link } from 'react-router-dom';
 
+
+interface meals{
+    _id: string;
+    name: string;
+    image:string;
+    main: string;
+    vegetables: string;
+    carbohydrate: string
+    price: number
+    createdAt:string
+    updatedAt: string
+}
 
 const ManageMeals = () => {
 //   const [openModal, setOpenModal] = useState(false);
 //   const [productEdit, setProductEdit] = useState(null);
-
+const [loading,setLoading] = useState(true)
+const [meals,setMeals] = useState<meals[]>([{
+  _id: "",
+  name: "",
+  image:"",
+  main: "",
+  vegetables: "",
+  carbohydrate: "",
+  price:0,
+  createdAt:"",
+  updatedAt: "",
+}])
   const handleAddition = () => {
     // setProductEdit(null)
     // setOpenModal(true);
@@ -29,82 +55,64 @@ const ManageMeals = () => {
     //   dispatch(changeInStockRequest(bodyData));
   }
 
-  return (
-    <div className='md:min-h-screen'
-    style={{
+  const MealsListReq = async() => {
+    try {
+      const response = await axios.get(MEAL_LIST_ROUTE)
+      const data:meals[] = response.data;
+      setMeals(data)
+      setLoading(false)
+      console.log(data);
+      
 
-      backgroundImage: `url('https://th.bing.com/th/id/OIG.Sxj.lVL37CYnxn5PA0uQ?w=270&h=270&c=6&r=0&o=5&dpr=2&pid=ImgGn')`,
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat' 
-    }}>
-      <div className="pt-[2%] pb-[10%]">
-      {  <h1 className='text-[3em] text-center'>
-        Loading
-        <span className="loading loading-ball loading-md"></span>
-        <span className="loading loading-ball loading-md"></span>
-        <span className="loading loading-ball loading-md"></span>
-        </h1>}
-        {
-        <div className="">
-          <div className="mb-[3%]">
-            <h1 className='text-center text-2xl sm:text-5xl lg:text-7xl font-serif my-[1%] sm:mb-[2%] lg:mb-[2.5%]'>Manage your Meals:</h1>
-            <button 
-            onClick={() => handleAddition()}
-            className="bg-green-400 text-xs sm:text-base md:text-lg px-2 sm:px-4 py-2 lg:px-5 lg:py-3 rounded-md font-semibold flex items-center justify-center gap-1 mx-auto font-serif hover:bg-green-500 hover:scale-105 hover:shadow-lg">
-              Add New Meal <FaPlus />
-            </button> 
-          </div>
-          <table className="table-auto text-start border border-collapse w-[99%] sm:w-[90%] md:w-[80%] mx-auto shadow-lg text-xs sm:text-md md:text-lg"> 
-              <thead className="border bg-slate-200">
-                <tr>
-                  <th className="w-[4%]">No.</th>
-                  <th className="text-start py-3 w-[20%] ps-3">name</th>
-                  <th className="text-start py-3 w-[20%] ps-3">vegetables</th>
-                  <th className="text-start py-3 w-[20%] ps-3">carbohydrate</th>
-                  <th className="text-start w-[10%]">Main</th>
-                  <th className="text-start w-[20%]">Price</th>
-                  <th className="text-center w-[15%]">Delete / Edit</th>
-                  <th className='text-center w-[15%]'>inStock</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* {products?.map((item,i) => { */}
-                  {/* const {name, pricePerCm, inStock, createdAt, _id} = item; */}
-                  {/* return ( */}
-                    <tr 
-                    // key={i}
-                    className={`bg-slate-50 `}>
-                      <td className="text-center py-1.5 border-b border-e">{" "}</td>
-                      <td className="border-b ps-3">{"name"}</td>
-                      <td className="border-b ps-3">{"name"}</td>
-                      <td className="border-b ps-3">{"name"}</td>
-                      <td className="border-b">{"createdAt".substring(2,10).split('-').join('/')}</td>
-                      <td className="border-b">{"pricePerCm"}</td>
-                      <td className="border-b text-center">
-                        <div className="flex justify-center gap-0.5 sm:gap-3">
-                          <BsTrash3 
-                        //   onClick={() => handleDelete(_id, name)}
-                          className="cursor-pointer text-lg sm:text-xl md:text-2xl text-red-600 hover:scale-125 hover:duration-100"/> 
-                          <FaEdit 
-                        //   onClick={() => handleEdit(item)}
-                          className="cursor-pointer text-lg sm:text-xl md:text-2xl text-green-600 hover:scale-125 hover:duration-100"/>
-                        </div>
-                      </td>
-                      <td className="border-b text-center ">
-                      <input 
-                    //   onClick={() => handleChangeInStock({inStock:!inStock, id:_id})}
-                      type="checkbox" className="toggle toggle-success toggle-sm sm:toggle-md flex mx-auto"  />
-                      </td>
-                    </tr>
-                {/* )})} */}
-              </tbody>
-            </table>
-          </div>}
-          {/* <Modal setOpenModal={setOpenModal} openModal={openModal} productEdit={productEdit} setProductEdit={setProductEdit}> */}
-            {/* <AddEditProduct productEdit={productEdit}/> */}
-          {/* </Modal> */}
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
+  useEffect(()=>{
+MealsListReq()
+  },[])
+
+  return (
+   
+    <div className='mx-[3%] pb-[2%]'>
+    <h1 className='text-4xl md:text-4xl lg:text-5xl text-amber-900 font-semibold mb-[3%] font-serif text-center'>menu:</h1>
+    {loading && <h1 className='text-[3em] text-center'>
+    Loading
+    <span className="loading loading-ball loading-md"></span>
+    <span className="loading loading-ball loading-md"></span>
+    <span className="loading loading-ball loading-md"></span>
+    </h1>}
+    <div 
+    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    {meals?.map((meal, i) => (
+      <div
+       key={i}
+        className="rounded-none h-[360px] w-full bg-slate-50 mx-auto shadow-md hover:shadow-xl hover:duration-300 relative">
+      <img
+        className='w-full h-[50%]'
+        src={meal.image}
+        alt="Furniture"
+        />
+      <div className="p-0 pt-3 relative">
+        <div className="mb-2 px-2">
+          <h5 className="text-amber-900 font-serif text-lg font-semibold mb-2 pe-5">{"guide".title}</h5>
+          {/* <p className='text-sm '>{guide.introduction?.substring(0,110)} [...]</p> */}
+        </div>
+        {/* {user && user.favoriteGuides.find(item => item == guide._id) && <FcLike className='absolute top-0.5 right-1 text-2xl'/>} */}
+      </div>
+      <div>
+      
+          <Link 
+          // to={`/singleBuildGuide/${guide._id}`}
+          className="absolute bottom-0 right-0 text-white  font-serif text-lg sm:text-base md:text-xs bg-black border-0 p-2 hover:scale-105"
+          >Edit</Link>
         </div>
     </div>
+        ))}
+    </div>
+</div>
   )
 }
 

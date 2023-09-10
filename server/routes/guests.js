@@ -12,10 +12,11 @@ router.get("/", async(req,res) => {
 router.post("/login", guestReq.login);
 router.get("/getGuestInfo", auth, guestReq.getInfo);
 router.get("/checkToken", auth, guestReq.checkToken);
+router.post("/signUp", adminReq.SignUp);
 
 // admin requests
 router.post("/signUp",auth,authAdmin, adminReq.SignUp);
-router.get("/guestsList",auth, authAdmin, adminReq.guestsList);
+router.get("/guestsList", adminReq.guestsList);
 router.get("/checkAdminToken", auth, authAdmin, adminReq.checkAdminToken);
 router.delete("/delete/:id", auth, authAdmin, adminReq.delteGuestById);
 router.patch("/changeRole/:id/:role",auth, authAdmin, adminReq.changeRole);

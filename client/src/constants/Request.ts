@@ -1,5 +1,5 @@
 import axios, { AxiosResponse, AxiosError } from 'axios';
-import {TOKEN_KEY} from "./url"
+import {GUEST_INFO_ROUTE, TOKEN_KEY} from "./url"
 interface ApiResponse<T> {
   data: T;
   // Add other properties you expect in the response here
@@ -27,3 +27,15 @@ export const apiRequest = async <T>(
     else throw error;
 }
 };
+
+export const guestInfoRequest = async() => {
+  try {
+    if(localStorage[TOKEN_KEY]){
+      const {data} = await axios.get(GUEST_INFO_ROUTE)
+      return data;
+    }
+  } catch (error) {
+    console.log(error);
+    
+  }
+}

@@ -18,7 +18,7 @@ exports.MealModel = mongoose.model("meals", mealSchema);
 exports.validMeal = (reqBody) => {
   const joiSchema = Joi.object({
     name: Joi.string().min(2).max(20).required(),
-    image: Joi.string().min(2).max(1000).required(),
+    image: Joi.string().min(2).max(2000).required(),
     main: Joi.string().min(1).max(100).required(),
     vegetables: Joi.string().min(1).max(100).required(),
     carbohydrate: Joi.string().min(1).max(100).required(),

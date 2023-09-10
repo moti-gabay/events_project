@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { apiRequest } from "../constants/Request";
-import { LOGIN_ROUTE } from "../constants/url";
+import {  SIGNUP_ROUTE } from "../constants/url";
+import axios from "axios";
 
 interface SignUpFormState {
   FirstName: string;
@@ -19,40 +20,42 @@ type UserType = {
 
 const SignUp: React.FC = () => {
   const [records, setRecords] = useState<UserType[]>([]);
-  const [User, setUser] = useState<SignUpFormState>({
+  const [User, setUser] = useState<SignUpFormState[]>([{
     FirstName: "",
     LastName: "",
     Email: "",
     Password: "",
-  });
+  }]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     const name = e.target.name;
     setUser({ ...User, [name]: value });
-    console.log(name);
+    console.log(User);
   };
-
+const nav = useNavigate()
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newRecord = { ...User, id: `${new Date().getTime()}` };
-    setRecords([...records, newRecord]);
+    setRecords(newRecord);
     console.log(newRecord);
+ 
 
     try {
       // You should send `User` instead of `records` to the API
-      const response = await apiRequest(LOGIN_ROUTE, "POST", User);
-      console.log(response);
+      const {data} = await axios.post(SIGNUP_ROUTE, records);
+      console.log(data);
+      nav(-1)
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div className="z-10 w-[100%] h-[500px]">
+    <div className=" w-[100%] h-[500px]">
       <div className="rounded-xl border border-orange-400 bg-slate-400 w-[60%] h-[300px] p-9 mx-auto my-9">
-        <h1 className="text-center text-3xl">Sign Up </h1>
-        <form onSubmit={handleSubmit} className="form text-center" action="">
+        <h1 className="text-center text-3xl ">Add Guest </h1>
+        <form onSubmit={handleSubmit} className="form text-center " action="">
           <div className="my-3">
             <label className="text-xl" htmlFor="FirstName">
               First Name :{" "}
@@ -75,7 +78,7 @@ const SignUp: React.FC = () => {
               name="LastName"
             />
           </div>
-          <div className="my-3">
+          <div className="my-3 ml-11">
             <label className="text-xl" htmlFor="Email">
               Email :{" "}
             </label>
@@ -86,9 +89,9 @@ const SignUp: React.FC = () => {
               name="Email"
             />
           </div>
-          <div className="my-3">
-            <label className="text-xl" htmlFor="Password">
-              Password:
+          <div className="my-3 ml-3">
+            <label className="text-xl mx-1" htmlFor="Password">
+              Password : 
             </label>
             <input
               onChange={handleChange}
@@ -98,10 +101,8 @@ const SignUp: React.FC = () => {
             />
           </div>
           <div className="">
-            {/* The Link component should wrap around the button text */}
-            <Link to="/home">Home</Link>
-            <button type="submit" className="btn btn-sm btn-warning">
-              Sign Up {/* Change button text from "Sign In" to "Sign Up" */}
+            <button  type="submit" className="btn btn-sm btn-warning">
+              Sign Up 
             </button>
           </div>
         </form>
