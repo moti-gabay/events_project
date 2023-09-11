@@ -1,15 +1,16 @@
+import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { apiRequest } from '../constants/Requests';
-// import { CHECK_ADMIN_TOKEN } from '../constants/url';
+import { CHECK_ADMIN_TOKEN } from '../constants/url';
 
 const AuthAdmin: React.FC = () => {
   const nav = useNavigate();
 
   const checkAdminToken = async () => {
     try {
-    //   const { data } = await apiRequest(CHECK_ADMIN_TOKEN, 'GET');
-      // You can use the 'data' variable as needed
+       const { data } = await axios.get(CHECK_ADMIN_TOKEN);
+      console.log(data);
+      
     } catch (error) {
       nav('*');
     }

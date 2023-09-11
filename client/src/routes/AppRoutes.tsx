@@ -14,6 +14,7 @@ import AddMeal from '../forms/AddMeal';
 import ManageGuests from "../pages/admin/ManageGuests"
 import ManageMeals from '../pages/admin/ManageMeals';
 import ManageEvents from '../pages/admin/ManageEvent';
+import AddEvent from '../forms/AddEvent';
 
 const AppRoutes: React.FC = () =>   {
     const router = createBrowserRouter([
@@ -33,12 +34,12 @@ const AppRoutes: React.FC = () =>   {
    path:"/admin",
    element: <LayoutAdmin/>,
    children:[
-    {path:"/admin/table",element:<Table/>},
-    {path:"/admin/scheduling",element:<Scheduling/>},
     {path:"/admin/signUp",element:<SignUp/>},
     {path:"/admin/manageMeals",element:<ManageMeals/>},
+    {path:"/admin/addMeal",element:<AddMeal/>},
     {path:"/admin",element:<ManageGuests/>},
     {path:"/admin/manageEvents",element:<ManageEvents/>},
+    {path:"/admin/AddEvent",element:<AddEvent/>},
    ]
 },{
     path:"*",

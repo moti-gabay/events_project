@@ -3,6 +3,7 @@ import  { useState,useEffect } from 'react'
 import {BsTrash3} from 'react-icons/bs'
 import {FaEdit, FaPlus} from 'react-icons/fa'
 import { EVENT_LIST_ROUTE } from '../../constants/url';
+import { useNavigate } from 'react-router-dom';
 // import Modal from '../../modal/Modal'
 interface event{
   date:String,
@@ -15,6 +16,7 @@ interface event{
 }
 
 const ManageEvents = () => {
+  const nav = useNavigate()
   const [loading, setLoading] = useState(true);
   const [event, setEvent] = useState<event[]>([{
     date:"",
@@ -80,7 +82,7 @@ const ManageEvents = () => {
           <div className="mb-[3%]">
             <h1 className='text-center text-2xl sm:text-5xl lg:text-7xl font-serif my-[1%] sm:mb-[2%] lg:mb-[2.5%]'>Manage your Events:</h1>
             <button 
-            onClick={() => handleAddition()}
+            onClick={() => nav("/admin/addEvent")}
             className="bg-green-400 text-xs sm:text-base md:text-lg px-2 sm:px-4 py-2 lg:px-5 lg:py-3 rounded-md font-semibold flex items-center justify-center gap-1 mx-auto font-serif hover:bg-green-500 hover:scale-105 hover:shadow-lg">
               Add New Event <FaPlus />
             </button> 

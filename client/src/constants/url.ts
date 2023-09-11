@@ -22,7 +22,7 @@ export const DELETE_FROM_FAVORITE_ROUTE = API_URL + "users/deleteFromFavorite/"
 export const GUESTS_LIST_REQ = API_URL + "guests/guestsList";
 export const DELETE_USER_ROUTE = API_URL + "users/delete/";
 export const CHANGE_USER_ROLE_ROUTE =API_URL + "users/changeRole/"
-export const CHECK_ADMIN_TOKEN = API_URL + "users/checkAdminToken";
+export const CHECK_ADMIN_TOKEN = API_URL + "guests/checkAdminToken";
 export const ADD_PRODUCT_ROUTE = API_URL + "products/addProduct";
 export const DELETE_PRODUCT_ROUTE =API_URL + "products/deleteProduct/"
 export const EDIT_PRODUCT_ROUTE = API_URL + "products/editProduct/";
@@ -36,7 +36,9 @@ export const CHANGE_ORDER_STATUS_ROUTE = API_URL + "orders/changeStatus/";
 
 //meals
 export const MEAL_LIST_ROUTE = API_URL + "meals/MealsList";
+export const ADD_MEAL_ROUTE = API_URL + "meals/addMeal";
 
 
 //events
 export const EVENT_LIST_ROUTE = API_URL + "events/eventsList";
+export const ADD_EVENT_ROUTE = API_URL + "events/addEvent";
