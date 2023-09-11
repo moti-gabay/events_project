@@ -13,8 +13,6 @@ const Login: React.FC = () => {
   const {
     register,
     handleSubmit,
-    reset,
-    
     formState: { errors },
   } = useForm<LoginFormValues>();
 const nav = useNavigate()
@@ -23,18 +21,14 @@ const nav = useNavigate()
  const {data} = await axios.post(LOGIN_ROUTE,bodyData)
  localStorage.setItem(TOKEN_KEY,data.token)
  console.log(data);
- reset()
- checkAdminToken()
+ if(data.role === "admin"){
+  nav("/admin")
+ }else if(data.role === "user"){
+ nav("/")
+ }
   };
 
-  const checkAdminToken = async() => {
-    const {data} = await axios.get(CHECK_ADMIN_TOKEN)
-    if(data.stause){
-      nav("/admin")
-    }else {
-      nav('*')
-    }
-  }
+  
 
   return (
     <div className='text-center flex justify-center'>
@@ -42,17 +36,17 @@ const nav = useNavigate()
       <form className='form-control w-[50%]' onSubmit={handleSubmit(onSubmit)}>
       <h2 className='text-3xl'>Login</h2>
         <div>
-          <label htmlFor="username">Username : </label>
+          <label htmlFor="">Email : </label>
           <input
           className='input'
             type="text"
-            id="username"
+            id="email"
             {...register('email', { required: 'Email is required' })}
           />
           {errors.email && <p>{errors.email.message}</p>}
         </div>
         <div>
-          <label htmlFor="password">Password : </label>
+          <label htmlFor="">Password : </label>
           <input
            className='input'
             type="password"

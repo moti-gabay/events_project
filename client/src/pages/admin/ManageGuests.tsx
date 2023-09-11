@@ -59,7 +59,6 @@ try {
   const data:guestsProps[] = response.data
 setGuests(data)
 setLoading(false)
-console.log(guests);
 } catch (error) {
   console.log(error);
 
