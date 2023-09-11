@@ -4,7 +4,7 @@ export const TOKEN_KEY = "token";
 // user
 export const SIGNUP_ROUTE = API_URL + "guests/signUp";
 export const LOGIN_ROUTE = API_URL + "guests/login";
-export const GUEST_INFO_ROUTE = API_URL + "guests/getGuestInfo";
+export const GUEST_INFO_ROUTE = API_URL + "guests/GuestInfo";
 export const CHECK_TOKEN = API_URL + "users/checkToken";
 export const PRODUCTS_LIST_ROUTE = API_URL + "products/productsList";
 

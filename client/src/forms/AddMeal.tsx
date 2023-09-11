@@ -2,6 +2,7 @@ import {  useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ADD_MEAL_ROUTE } from "../constants/url";
 import axios from "axios";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 type MealType = {
   name: string;
@@ -12,6 +13,12 @@ type MealType = {
 };
 
 const AddMeal: React.FC = () => {
+   const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<MealType>();
+  
   const [records, setRecords] = useState<MealType[]>([
     {
       name: "",
@@ -36,26 +43,18 @@ const AddMeal: React.FC = () => {
     const name = e.target.name;
     setMeal({ ...meal, [name]: value });
   };
-  const nav = useNavigate();
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setRecords(meal);
-    console.log(meal);
-    try {
-      // You should send `User` instead of `records` to the API
-      const { data } = await axios.post(ADD_MEAL_ROUTE, records);
-      console.log(data);
-      nav(-1);
-    } catch (error) {
-      console.error(error);
-    }
+  const onSubmit: SubmitHandler<MealType> =async (bodyData) => {
+ const {data} = await axios.post(ADD_MEAL_ROUTE,bodyData)
+ console.log(data);
+ 
   };
+  
 
   return (
     <div className=" w-[100%] h-[600px]">
       <div className="rounded-xl border border-orange-400 bg-slate-400 w-[60%] h-auto p-9 mx-auto my-9">
         <h1 className="text-center text-3xl ">Add Meal </h1>
-        <form onSubmit={handleSubmit} className="form text-center " action="">
+        <form onSubmit={handleSubmit(onSubmit)} className="form text-center " action="">
           <div className="my-3">
             <label className="text-xl" htmlFor="FirstName">
                Name :{" "}
@@ -96,8 +95,8 @@ const AddMeal: React.FC = () => {
             <input
               onChange={handleChange}
               className="input h-8"
-              type="password" // Change this to type "password" for a password input
-              name="Password"
+              type="text" // Change this to type "password" for a password input
+              name="main"
             />
           </div>
           <div className="my-3 mr-8">
@@ -107,8 +106,8 @@ const AddMeal: React.FC = () => {
             <input
               onChange={handleChange}
               className="input h-8"
-              type="password" // Change this to type "password" for a password input
-              name="Password"
+              type="text" // Change this to type "password" for a password input
+              
             />
           </div>
           <div className="">

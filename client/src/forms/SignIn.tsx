@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { CHECK_ADMIN_TOKEN, LOGIN_ROUTE, TOKEN_KEY } from '../constants/url';
+import {  LOGIN_ROUTE, TOKEN_KEY } from '../constants/url';
 import { useNavigate } from 'react-router-dom';
 
 type LoginFormValues = {
@@ -34,7 +34,7 @@ const nav = useNavigate()
     <div className='text-center flex justify-center'>
      
       <form className='form-control w-[50%]' onSubmit={handleSubmit(onSubmit)}>
-      <h2 className='text-3xl'>Login</h2>
+      <h2 className='text-3xl p-1'>Sign in</h2>
         <div>
           <label htmlFor="">Email : </label>
           <input

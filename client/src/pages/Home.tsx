@@ -1,10 +1,52 @@
+import axios from "axios";
+import {useEffect,useState} from "react"
+import { GUEST_INFO_ROUTE, TOKEN_KEY } from "../constants/url";
+
+type UserType = {
+  FirstName: string;
+  LastName: string;
+  table?:number;
+  meal:string;
+  email: string;
+  Password: string;
+};
 const HomePage: React.FC = () => {
+ const [guest,setGuest] = useState<UserType[]>([{
+  FirstName: "",
+  LastName: "",
+  table:0,
+  meal:"",
+  email: "",
+  Password: ""
+ }]);
+ const [loading,setLoading] = useState(true)
+
+const guestInfo = async() => {
+  const {data} = await axios({
+    url:GUEST_INFO_ROUTE,
+    method:"GET",
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key':localStorage[TOKEN_KEY]
+  }
+  })
+  console.log(data);
+  setLoading(false)
+  setGuest(data)
+  
+}
+
+
+  useEffect(()=> {
+guestInfo()
+  },[])
+ 
   return (
     <div className="h-[55vh] sm:h-[68vh] md:h-[70vh] lg:h-[74vh] relative">
       <img src="" alt="" />
       <div
         style={{
-          backgroundImage: "url(./imghall.jpg)",
+          backgroundImage: "url(https://images.pexels.com/photos/15621210/pexels-photo-15621210/free-photo-of-restaurant-setting-for-party.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load)",
           backgroundSize: "cover",
           position: "relative",
         }}
@@ -31,15 +73,15 @@ const HomePage: React.FC = () => {
         </div>
       </div>
       <div className="absolute rounded-xl left-[30%] top-[400px] mx-auto w-[400px] border text-center text-white items-center text-xl">
-      { <h1 className='text-[3em] text-center'>
+      {loading &&  <h1 className='text-[3em] text-center'>
         Loading
         <span className="loading loading-ball loading-md"></span>
         <span className="loading loading-ball loading-md"></span>
         <span className="loading loading-ball loading-md"></span>
         </h1>}
-        <h1>Hi Moti</h1>
-        <p>Table Number : 0</p>
-        <p>your menu :</p>
+        <h1>Hi {guest.email}</h1>
+        <p>Table Number : {guest?.table}</p>
+        <p>your menu :{guest?.meal}</p>
         <p>more....</p>
       </div>
     </div>

@@ -1,6 +1,13 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { TOKEN_KEY } from "../constants/url"
 
 const Header: React.FC = () => {
+  const nav = useNavigate()
+  const singOut = () => {
+localStorage.removeItem(TOKEN_KEY)
+nav("/signIn")
+
+  }
   return (
     <div className={` "pb-[9%] lg:pb-[6.5%]" : "pb-[29%] min-[400px]:pb-[21%] sm:pb-[18%] md:pb-[16.5%] lg:pb-[13.5%] xl:pb-[11%]"}`}>
     <div className=' shadow-lg fixed z-20'>
@@ -30,10 +37,13 @@ const Header: React.FC = () => {
               </Link>
             </li>
           </ul>
-          <div className="text-end">
+          <div className="text-end flex justify-between w-[150px]">
           
             <Link to="/signIn" type="button"  className='text-xl hover:scale-110'>
               Sign In
+            </Link>
+            <Link onClick={singOut} to="/signIn" type="button"  className='text-xl hover:scale-110'>
+             sign out
             </Link>
           </div>
         

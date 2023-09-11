@@ -9,6 +9,7 @@ const guestSchema = new mongoose.Schema({
   email:String,
   password:String,
   meal:String,
+  table:Number,
   role:{
     type:String, default:"user"
   }
@@ -30,6 +31,7 @@ exports.validSignUp = (reqBody) => {
     FirstName:Joi.string().min(2).max(20).required(),
     LastName:Joi.string().min(2).max(20).required(),
     meal:Joi.string().min(2).max(20),
+    table:Joi.number().min(1).max(100),
     email:Joi.string().min(2).max(200).email().required(),
     password:Joi.string().min(4).max(150).required()
   })
