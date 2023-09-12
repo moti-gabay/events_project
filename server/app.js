@@ -4,7 +4,7 @@ const path = require("path");
 const {routesInit} = require("./routes/configRoutes");
 const { config } = require("./config/secret"); 
 const cors = require("cors")
-require("./db/mongoConnet");
+require("./db/mongoConnect");
 const app = express();
 
  

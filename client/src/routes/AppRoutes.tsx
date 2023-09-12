@@ -6,7 +6,7 @@ import Meals from '../pages/Meals';
 import Table from '../pages/Table';
 import Scheduling from '../pages/Scheduling';
 import LayoutAdmin from '../layout/LayuotAdmin';
-import NotFound404 from '../components/NotFound404';
+import NotFound404 from '../auth/components/NotFound404';
 import SignIn from '../forms/SignIn';
 import SignUp from '../forms/SignUp';
 import AddMeal from '../forms/AddMeal';
