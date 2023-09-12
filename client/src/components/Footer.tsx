@@ -19,12 +19,12 @@ return (
               meals
              </Link>
           </li>
-          <li>
+          {/* <li>
              <Link to={"/Scheduling"} 
              className='hover:text-amber-700 hover:font-bold'>
               Scheduling
              </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>

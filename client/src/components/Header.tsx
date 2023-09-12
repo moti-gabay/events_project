@@ -31,11 +31,11 @@ nav("/signIn")
                 Meals
               </Link>
             </li>
-            <li className='hover:scale-110'>
+            {/* <li className='hover:scale-110'>
               <Link to="/Scheduling" className=' px-2 hover:scale-110'>
               Scheduling
               </Link>
-            </li>
+            </li> */}
           </ul>
           <div className="text-end flex justify-between w-[150px]">
           

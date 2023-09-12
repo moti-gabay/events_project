@@ -12,7 +12,7 @@ router.get("/", async(req,res) => {
 router.post("/login", guestReq.login);
 router.get("/GuestInfo", auth, guestReq.getInfo);
 router.get("/checkToken", auth, guestReq.checkToken);
-router.post("/signUp", adminReq.SignUp);
+// router.post("/signUp", adminReq.SignUp);
 
 // admin requests
 router.post("/signUp",auth,authAdmin, adminReq.SignUp);

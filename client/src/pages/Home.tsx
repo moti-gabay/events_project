@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
   email: "",
   Password: ""
  }]);
- const [loading,setLoading] = useState(true)
+ const [loading,setLoading] = useState(false)
 
 const guestInfo = async() => {
   const {data} = await axios({
@@ -79,7 +79,7 @@ guestInfo()
         <span className="loading loading-ball loading-md"></span>
         <span className="loading loading-ball loading-md"></span>
         </h1>}
-        <h1>Hi {guest.email}</h1>
+        <h1>Hi {guest?.email}</h1>
         <p>Table Number : {guest?.table}</p>
         <p>your menu :{guest?.meal}</p>
         <p>more....</p>

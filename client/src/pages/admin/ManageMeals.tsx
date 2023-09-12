@@ -60,11 +60,8 @@ const nav = useNavigate()
       setMeals(data)
       setLoading(false)
       console.log(data);
-      
-
     } catch (error) {
       console.log(error);
-      
     }
   }
 
